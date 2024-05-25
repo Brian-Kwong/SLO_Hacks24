@@ -6,14 +6,14 @@ dotenv.config();
 
 function getMongoURL(dbname) {
   let connection_string = `mongodb://localhost:27017/${dbname}`;
-  const { MONGO_USER, MONGO_PASS, MONGO_CLUSTER } = process.env;
+  const { MONGO_USER, MONGO_PASS } = process.env;
 
-  if (MONGO_USER && MONGO_PASS && MONGO_CLUSTER) {
+  if (MONGO_USER && MONGO_PASS) {
     console.log(
       "Connecting to MongoDB at",
-      `mongodb+srv://${MONGO_USER}:<password>@${MONGO_CLUSTER}/${dbname}`
+      `mongodb+srv://${MONGO_USER}:<password>@cluster0.yomgmem.mongodb.net/${dbname}`
     );
-    connection_string = `mongodb+srv://${MONGO_USER}:${MONGO_PASS}@$cluster0.yomgmem/${dbname}?retryWrites=true&w=majority`;
+    connection_string = `mongodb+srv://${MONGO_USER}:${MONGO_PASS}@cluster0.yomgmem.mongodb.net/${dbname}?retryWrites=true&w=majority`;
   } else {
     console.log("Connecting to MongoDB at ", connection_string);
   }

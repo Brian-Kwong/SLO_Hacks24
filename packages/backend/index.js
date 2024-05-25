@@ -1,4 +1,5 @@
 import  express  from 'express';
+import { connect } from './services/mongo.js';
 
 const app = express();
 
@@ -12,6 +13,9 @@ app.post('/signup', (req, res) => {
 
 app.post("/image",);
 app.get("/images",);
+
+// Connect to mongo DB
+connect("test");
 
 app.listen(3000, () => {
     console.log('Server is running on port 3000');

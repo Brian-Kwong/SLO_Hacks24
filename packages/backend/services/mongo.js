@@ -5,9 +5,9 @@ mongoose.set("debug", true);
 dotenv.config();
 
 function getMongoURL(dbname) {
-  let connection_string = `mongodb://localhost:27017/${dbname}`;
-  const { MONGO_USER, MONGO_PASS } = process.env;
-
+  const MONGO_USER = process.env.MONGO_USER;
+  const MONGO_PASS = process.env.MONGO_PASS;
+  let connection_string = `mongodb+srv://${MONGO_USER}:${MONGO_PASS}@cluster0.yomgmem.mongodb.net/${dbname}?retryWrites=true&w=majority`;
   if (MONGO_USER && MONGO_PASS) {
     console.log(
       "Connecting to MongoDB at",

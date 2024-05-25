@@ -11,18 +11,16 @@ const router = express.Router();
 app.use(express.json());
 addRoutes(app);
 addAuthRoutes(router);
+const storage = multer.memoryStorage();
+const multerServer = multer({ storage: storage });
 
-app.post("/image",);
-app.get("/images",);
-
+app.post("/image", multerServer.single("image"), postImage);
+app.get("/images");
+app.get("/foodFacts", getFoodFacts);
 app.use("/auth", router);
 
 // Connect to mongo DB
 connect("test");
-
-app.listen(3000, () => {
-    console.log("Server is running on port 3000");
-});
 
 
 app.listen(3000, () => {

@@ -1,5 +1,5 @@
 import mongoose, { model, Schema } from "mongoose"
-import { foodModel } from "./food";
+import { foodModel } from "./food.js";
 
 
 const userSchema = new Schema({

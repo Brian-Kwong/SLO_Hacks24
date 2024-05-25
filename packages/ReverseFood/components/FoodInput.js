@@ -40,31 +40,47 @@ export default function FoodInput() {
   };
 
   return (
-    <View>
-      <Text>Name of food:</Text>
-      <TextInput
-        placeholder="Name"
-        onChangeText={(text) => setFoodName(text)}
-        value={foodName}
-      ></TextInput>
-      <Text>Picture of food:</Text>
-      <Button title="Pick an image from camera roll" onPress={pickImage} />
-      {image && (
-        <Image source={{ uri: image }} style={{ height: 300, width: 300 }} />
-      )}
-      <Text>Ingredients:</Text>
-      <TextInput
-        placeholder="Ingredients"
-        onChangeText={(text) => setIngredients(text)}
-        value={ingredients}
-      ></TextInput>
-      <Text>Description:</Text>
-      <TextInput
-        placeholder="Description"
-        onChangeText={(text) => setDescription(text)}
-        value={desc}
-      ></TextInput>
+    <View style={styles.container}>
+      <View>
+        <Text>Name of food:</Text>
+        <TextInput
+          placeholder="Name"
+          onChangeText={(text) => setFoodName(text)}
+          value={foodName}
+        ></TextInput>
+      </View>
+      <View>
+        <Text>Picture of food:</Text>
+        <Button title="Pick an image from camera roll" onPress={pickImage} />
+        {image && (
+          <Image source={{ uri: image }} style={{ height: 300, width: 300 }} />
+        )}
+      </View>
+      <View>
+        <Text>Ingredients:</Text>
+        <TextInput
+          placeholder="Ingredients"
+          onChangeText={(text) => setIngredients(text)}
+          value={ingredients}
+        ></TextInput>
+      </View>
+      <View>
+        <Text>Description:</Text>
+        <TextInput
+          placeholder="Description"
+          onChangeText={(text) => setDescription(text)}
+          value={desc}
+        ></TextInput>
+      </View>
       <Button title="Submit" onPress={handleSubmit} />
     </View>
   );
 }
+
+const styles = StyleSheet.create({
+  container: {
+    height: "100%",
+    justifyContent: "space-around",
+    alignItems: "center",
+  },
+});

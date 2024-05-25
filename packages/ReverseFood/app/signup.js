@@ -13,9 +13,23 @@ export default function Login() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
 
-  const handleLogin = () => {
-    console.log("Login");
-  };
+  async function handleLogin() {
+    const response = await fetch("localhost:3000/auth/register", {
+      method: "POST",
+      body: JSON.stringify({
+        username: username,
+        password: password,
+      }),
+    });
+
+    const result = await response.json();
+    if (result) {
+      console.log("Account created");
+    } else {
+      throw Error("Error creating account");
+    }
+  }
+
   return (
     <View>
       <Text>Sign Up</Text>

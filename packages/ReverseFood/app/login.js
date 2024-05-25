@@ -13,9 +13,22 @@ export default function Login() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
 
-  const handleLogin = () => {
-    console.log("Login");
-  };
+  async function handleLogin() {
+    const response = await fetch("localhost:3000/auth/login", {
+      method: "POST",
+      body: JSON.stringify({
+        username: username,
+        password: password,
+      }),
+    });
+
+    const result = await response.json();
+    if (result) {
+      console.log("Logged In");
+    } else {
+      throw Error("Error logging in");
+    }
+  }
   return (
     <View>
       <Text>Login</Text>

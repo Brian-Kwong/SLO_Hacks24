@@ -23,7 +23,7 @@ export default function Login() {
         <TextInput
           placeholder="USERNAME"
           value={username}
-          onChangeText={setUsername}
+          onChangeText={(text) => setUsername(text)}
           autoCorrect={false}
           autoCapitalize="none"
         />
@@ -31,7 +31,7 @@ export default function Login() {
           placeholder="PASSWORD"
           secureTextEntry
           value={password}
-          onChangeText={setPassword}
+          onChangeText={(text) => setPassword(text)}
           autoCorrect={false}
           autoCapitalize="none"
         />

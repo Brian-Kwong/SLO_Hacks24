@@ -72,7 +72,7 @@ function verify(username, password){
             if (credsOnFile)
             bcrypt.compare(
                 password,
-                credsOnFile.hashedPassword,
+                credsOnFile.password,
                 (_, result) => {
                 console.log(
                     "Verified",

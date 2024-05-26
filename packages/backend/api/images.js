@@ -5,6 +5,8 @@ dotenv.config();
 const FDA_API_KEY = process.env.FDA_API_KEY;
 const FDA_URL = "https://api.nal.usda.gov/fdc/v1/foods/search?query=";
 import { GoogleGenerativeAI } from "@google/generative-ai";
+import { userModel } from "../models/user.js";
+import { foodModel } from "../models/food.js";
 
 let genaiClient = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
 genaiClient = genaiClient.getGenerativeModel({
@@ -102,5 +104,22 @@ export async function getFoodFacts(req, res) {
                 res.status(response.status).send("Error");
             }
         });
+    }
+}
+
+export async function getImages(req, res){
+    const username = res.locals.username
+    try{
+        const foundUser = await userModel.findOne({username: username}).populate("images").exec();
+        
+        if (!foundUser){
+            res.sendStatus(404).end();
+        }
+        
+        res.send(foundUser.images).status(200);
+    }
+    catch(error){
+        console.error(error);
+        res.send(error);
     }
 }

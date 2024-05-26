@@ -33,7 +33,7 @@ export async function submitFood(req, res){
             await foodModel.findOneAndUpdate({_id: newFoodItem._id}, {$push: {"nutrients": {name: nutrient.name, unit: nutrient.unit, value: Number(nutrient.value)}}})
         })
 
-        const updatedUser = await userModel.findOneAndUpdate({username: username}, {$push: {"images": newFoodItem._id }})
+        const updatedUser = await userModel.findOneAndUpdate({username: username}, {$push: {"images": newFoodItem._id }}).exec();
 
         if (!updatedUser){
             res.sendStatus(404).end();

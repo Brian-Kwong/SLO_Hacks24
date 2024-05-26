@@ -11,11 +11,12 @@ genaiClient = genaiClient.getGenerativeModel({
     model: "gemini-1.5-flash-latest",
 });
 
-export async function postImage(req, res) {
+export async function postImage(req, res, next) {
     const image = req.body.image;
     const foodName = req.body.foodName;
     const ingredients = req.body.ingredients;
     const description = req.body.description;
+    res.locals.desc = req.body.description;
     let basePrompt =
         "Given the following can you tell me what type of give as specific descriptive name as possible for what dish is,  its ingredients, and the serving size you observe in the image, and put the output in JSON";
     var prompt = [basePrompt];
@@ -43,7 +44,9 @@ export async function postImage(req, res) {
                 foodName: data.dish,
                 foodServingSize: data.serving_size,
             };
-            getFoodFacts(req, res);
+            res.locals.imgData = data;
+            res.locals.encodedImage = req.body.image;
+            next();
         })
         .catch((error) => {
             console.log(error);
@@ -52,8 +55,8 @@ export async function postImage(req, res) {
     }
     else{
         if(foodName !== undefined){
-        req.query.foodName = foodName;
-        getFoodFacts(req, res);
+        res.locals.foodName = foodName;
+        next();
         }
         else{
             res.status(400).send("Please provide an image or food name");

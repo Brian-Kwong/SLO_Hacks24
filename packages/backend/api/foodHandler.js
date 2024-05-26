@@ -17,7 +17,7 @@ export async function submitFood(req, res){
         return;
     }
 
-    const foodFacts = await fetch(`http://localhost:3000/foodFacts?foodName=${imgData ? imgData.dish : foodName}`, {method: "GET"}).then((response) => {return response.json()});
+    const foodFacts = await fetch(`http://localhost:18000/foodFacts?foodName=${imgData ? imgData.dish : foodName}`, {method: "GET"}).then((response) => {return response.json()});
 
     try {
         const newFoodItem = await new foodModel({

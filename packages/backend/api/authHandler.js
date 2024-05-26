@@ -5,6 +5,7 @@ import { userModel } from "../models/user.js";
 
 export function register(req, res){
     const { username, password } = req.body;
+    console.log(username, password);
     if (!username || !password) {
         res.status(400).send("Bad request: Invalid input data.");
     }

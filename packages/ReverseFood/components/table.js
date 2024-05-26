@@ -2,7 +2,6 @@ import {View, Text, ScrollView} from "react-native";
 import {our_styles,table_styles} from "../styles/styles.jsx";
 
 function TableHeader(text1, text2, text3,text4) {
-    console.log(text1 + " " + text2 + " " + text3 + " " + text4);
     return <View style={our_styles.tablbleRow}>
         <Text style={table_styles.tableHeaderCell}>{text1}</Text>
         <Text style={table_styles.tableHeaderCell}>{text2}</Text>
@@ -13,7 +12,7 @@ function TableHeader(text1, text2, text3,text4) {
 
 function TableCell(text1, text2, text3,text4) {
     console.log(text1 + " " + text2 + " " + text3 + " " + text4);
-    return <View style={our_styles.tablbleRow}>
+    return <View style={our_styles.tablbleRow} key={text1}>
         <Text style={table_styles.tableCell}>{text1}</Text>
         <Text style={table_styles.tableCell}>{text2}</Text>
         <Text style={table_styles.tableCell}>{text3}</Text>

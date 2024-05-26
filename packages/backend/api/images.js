@@ -85,15 +85,15 @@ export async function getFoodFacts(req, res) {
                     let foodData = data.foods[0];
                     foodData = {
                         name: food,
-                        description: (foodData.description === undefined) ? "Unknown" : changeCase.capitalCase(foodData.description),
-                        foodCategory: (foodData.foodCategory === undefined) ? "Unknown" : changeCase.capitalCase(foodData.foodCategory),
-                        ingredients: (foodData.ingredients === undefined) ? "Unknown"  : changeCase.capitalCase(foodData.ingredients),
+                        description: changeCase.capitalCase(foodData.description),
+                        foodCategory: changeCase.capitalCase(foodData.foodCategory),
+                        ingredients: changeCase.capitalCase(foodData.ingredients),
                         nutrients: foodData.foodNutrients.map((nutrient) => {
                             return {
                                 name: nutrient.nutrientName,
                                 unit: nutrient.unitName,
                                 value: nutrient.value,
-                                dailyValue: nutrient.percentDailyValue === undefined ? 0 : nutrient.percentDailyValue,
+                                dailyValue: nutrient.dailyValue,
                             };
                         }),
                         image: null,

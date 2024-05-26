@@ -16,6 +16,9 @@ import { colors, ourStyles } from "../styles/styles.jsx";
 import { router } from "expo-router";
 import SecureStore from "expo-secure-store";
 
+function swutchPages(image, foodName, ingredients, desc){
+  router.push({pathname: "info", params: {image: image, foodName: foodName, ingredients: ingredients, description: desc}})
+}
 
 
 export default function FoodInput() {
@@ -71,9 +74,7 @@ export default function FoodInput() {
           value={desc}
         ></TextInput>
       </View>
-      <Button title="Submit" onPress={
-        router.push({pathname: "info", params: {image: image, foodName: foodName, ingredients: ingredients, description: desc}})
-      } />
+      <Button title="Submit" onPress={()=>swutchPages(image,foodName,ingredients,desc)}/>
     </View>
   );
 }

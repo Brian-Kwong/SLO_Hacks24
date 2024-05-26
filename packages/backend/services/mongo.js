@@ -9,7 +9,6 @@ function getMongoURL(dbname) {
   const MONGO_PASS = process.env.MONGO_PASS;
   let connection_string = `mongodb+srv://${MONGO_USER}:${MONGO_PASS}@cluster0.yomgmem.mongodb.net/${dbname}?retryWrites=true&w=majority`;
   if (MONGO_USER && MONGO_PASS) {
-    console.log("Ok...");
     console.log(
       "Connecting to MongoDB at",
       `mongodb+srv://${MONGO_USER}:<password>@cluster0.yomgmem.mongodb.net/${dbname}`

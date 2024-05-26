@@ -7,7 +7,7 @@ const foodSchema = new Schema({
     description: {type: String},
     foodCategory: {type: String},
     ingredients: [{type: String}],
-    nutrients: [{_id: {type: mongoose.Types.ObjectId, required: true}, name: {type: String, required: true}, unit: {type: Number}, value: {type: Number}, dailyValue: {type: Number}}]
+    nutrients: [{name: {type: String, required: true}, unit: {type: String}, value: {type: Number}, dailyValue: {type: Number}}]
 })
 
 export const foodModel = model("Food", foodSchema);

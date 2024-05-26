@@ -14,7 +14,7 @@ export default function Login() {
   const [password, setPassword] = useState("");
 
   async function handleLogin() {
-    const response = await fetch("localhost:3000/auth/login", {
+    const response = await fetch("10.144.42.152/auth/login", {
       method: "POST",
       body: JSON.stringify({
         username: username,

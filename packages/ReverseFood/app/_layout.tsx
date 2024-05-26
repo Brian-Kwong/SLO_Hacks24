@@ -14,10 +14,10 @@ export default function Layout() {
       }}
     >
       {/* Optionally configure static options outside the route.*/}
-      <Stack.Screen name="Home" options={{}} />
-      <Stack.Screen name="Login" options={{}} />
-      <Stack.Screen name="Signup" options={{}} />
-      <Stack.Screen name="Info" options={{}} />
+      <Stack.Screen name="index" options={{}} />
+      <Stack.Screen name="login" options={{}} />
+      <Stack.Screen name="signup" options={{}} />
+      <Stack.Screen name="info" options={{}} />
     </Stack>
   );
 }

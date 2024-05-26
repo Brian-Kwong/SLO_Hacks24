@@ -25,14 +25,21 @@ const url="http://10.151.71.149:18000";
         username: username,
         password: password,
       }),
-    });
-
-    const result = await response.json();
-    if (result) {
-      console.log("Logged In");
-    } else {
-      throw Error("Error logging in");
+    }).then((response)=>{
+      if(response.status === 201){
+        response.json().then((data) => {
+          SecureStore.setItemAsync("token", data.token).then(() => {
+            alert("Signed up");
+          }).catch((error) => {
+            console.log(error);
+          });
+        });
+      }
+      else{
+        console.log("Error logging in", response.status)
+      }
     }
+    ).catch((error) => {console.log(error)});
   }
   return (
     <View style={styles.container}>

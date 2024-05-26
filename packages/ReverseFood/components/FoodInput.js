@@ -193,22 +193,23 @@ export default function FoodInput() {
       </View>
       <View> 
         <Text style={styles.text}>Picture of food:</Text>
+        
         <Button title="Pick an image from camera roll" onPress={pickImage} />
         {image && (
           <Image source={{ uri: 'data:image/jpeg;base64,' + image }} style={{ height: 300, width: 300 }} />
         )}
       </View>
       <View>
-        <Text>Ingredients:</Text>
-        <TextInput
+        <Text style={styles.text}>Ingredients:</Text>
+        <TextInput style={styles.textinput}
           placeholder="Ingredients"
           onChangeText={(text) => setIngredients(text)}
           value={ingredients}
         ></TextInput>
       </View>
       <View>
-        <Text>Description:</Text>
-        <TextInput
+        <Text style={styles.text}>Description:</Text>
+        <TextInput style={styles.textinput}
           placeholder="Description"
           onChangeText={(text) => setDescription(text)}
           value={desc}
@@ -227,10 +228,13 @@ const styles = StyleSheet.create({
   },
   text: {
     fontSize: 18,  // Increase this value to make the font bigger
-    padding: 5
+    padding: 5,
+    textAlign: "center"
   },
   textinput: {
     fontSize: 16,
     padding: 5,
+    textAlign: "center",
+
   },
 });

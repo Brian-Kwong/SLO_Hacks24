@@ -33,7 +33,7 @@ export default function Login() {
   return (
     <View style={styles.container}>
       <View>
-      <Text style={styles.text}>SIGN UP</Text>
+      <Text style={styles.text}>Sign Up</Text>
         <View>
           <TextInput style={styles.textinput}
             placeholder="Username"
@@ -56,7 +56,7 @@ export default function Login() {
       </View>
       <View>
         <Pressable onPress={handleLogin}>
-          <Text>Sign In</Text>
+          <Text style={styles.text}>Sign Up</Text>
         </Pressable>
       </View>
     </View>
@@ -70,10 +70,12 @@ const styles = StyleSheet.create({
   },
   text: {
     fontSize: 24,  // Increase this value to make the font bigger
-    padding: 5
+    padding: 5,
+    textAlign: "center",
   },
   textinput: {
     fontSize: 16,
     padding: 5,
+    textAlign: "center",
   },
 });

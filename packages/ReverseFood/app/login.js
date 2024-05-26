@@ -8,6 +8,7 @@ import {
   Pressable,
 } from "react-native";
 import { useState } from "react";
+import SecureStore from "expo-secure-store";
 
 export default function Login() {
   const [username, setUsername] = useState("");
@@ -26,7 +27,7 @@ const url="http://10.151.71.149:18000";
         password: password,
       }),
     }).then((response)=>{
-      if(response.status === 201){
+      if(response.status === 200){
         response.json().then((data) => {
           SecureStore.setItemAsync("token", data.token).then(() => {
             alert("Signed up");

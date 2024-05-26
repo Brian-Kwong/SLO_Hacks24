@@ -29,7 +29,11 @@ export default function Login() {
       }),
     }).then((response)=>{
       if(response === 200){
-        console.log("Logged In")
+        response.json().then((data) => {
+          SecureStore.setItemAsync("token", data.token).then(() => {
+            alert("Logged In");
+          });
+        });
       }
       else{
         console.log("Error logging in", response.status)

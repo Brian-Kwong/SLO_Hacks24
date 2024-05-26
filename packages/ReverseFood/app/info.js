@@ -4,7 +4,8 @@ import { useLocalSearchParams } from "expo-router";
 import Table from "../components/table.js";
 import * as SecureStore from "expo-secure-store";
 import { useEffect, useState } from "react";
-
+import { get } from "react-native/Libraries/TurboModule/TurboModuleRegistry.js";
+import { params } from "../components/FoodInput.js";
 const URL = "http:/10.144.207.193:3000/image";
 
 
@@ -12,10 +13,7 @@ const URL = "http:/10.144.207.193:3000/image";
 
 export default info = () => {
     const [myData , setData] = useState({ name : "Loading", description : "Loading", foodCategory : "Loading", ingredients : "Loading", nutrients : []})
-    
-
     async function fetchData () { await SecureStore.getItemAsync("token").then((token) => {
-        const params = useLocalSearchParams();
         if (token === undefined) {
             console.log("No token found");
         }
@@ -51,8 +49,8 @@ export default info = () => {
 }})};
     
     useEffect(() => {
-    fetchData().then((data) => {setData({
-        name : data.name, description : (data.name === undefined), foodCategory : data.foodCategory, ingredients : data.ingredients, nutrients : data.nutrients
+        fetchData().then((data) => {setData({
+        name : data.name, description : data.name, foodCategory : data.foodCategory, ingredients : data.ingredients, nutrients : data.nutrients
     })}).catch((error) => console.log(error))
     ;}, []);
 

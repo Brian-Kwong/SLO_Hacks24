@@ -20,6 +20,12 @@ function swutchPages(image, foodName, ingredients, desc){
   router.push({pathname: "info", params: {image: image, foodName: foodName, ingredients: ingredients, description: desc}})
 }
 
+export var params = {
+  image: "",
+  foodName: "",
+  ingredients: "",
+  description: "",
+}
 
 export default function FoodInput() {
   const [image, setImage] = useState(null);
@@ -74,7 +80,7 @@ export default function FoodInput() {
           value={desc}
         ></TextInput>
       </View>
-      <Button title="Submit" onPress={()=>swutchPages(image,foodName,ingredients,desc)}/>
+      <Button title="Submit" onPress={()=> { params = {image,foodName,ingredients,desc} ; swutchPages(image,foodName,ingredients,desc)}}/>
     </View>
   );
 }

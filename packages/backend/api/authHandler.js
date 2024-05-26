@@ -103,3 +103,24 @@ function generateAccessToken(username){
       );
     });
   }
+
+  // middleware function
+  export function authenticateUser(req, res, next) {
+    const authHeader = req.headers["authorization"];
+    //Getting the 2nd part of the auth header (the token)
+    const token = authHeader && authHeader.split(" ")[1];
+  
+    if (!token) {
+      res.status(401).end();
+    } else {
+        dotenv.config();
+        const TOKEN_SECRET = process.env.JWT || "NOT_A_SECRET";
+      jwt.verify(token, TOKEN_SECRET, (error, decoded) => {
+        if (decoded){
+            res.locals.username = decoded.username;
+            next();
+        }
+        else res.status(403).end();
+      });
+    }
+  }

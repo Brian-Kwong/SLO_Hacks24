@@ -45,15 +45,15 @@ export default function FoodInput() {
   return (
     <View style={styles.container}>
       <View>
-        <Text>Name of food:</Text>
-        <TextInput
+        <Text style={styles.text}>Name of food:</Text>
+        <TextInput style={styles.textinput}
           placeholder="Name"
           onChangeText={(text) => setFoodName(text)}
           value={foodName}
         ></TextInput>
       </View>
-      <View>
-        <Text>Picture of food:</Text>
+      <View> 
+        <Text style={styles.text}>Picture of food:</Text>
         <Button title="Pick an image from camera roll" onPress={pickImage} />
         {image && (
           <Image source={{ uri: 'data:image/jpeg;base64,' + image }} style={{ height: 300, width: 300 }} />
@@ -85,5 +85,13 @@ const styles = StyleSheet.create({
     height: "100%",
     justifyContent: "space-around",
     alignItems: "center",
+  },
+  text: {
+    fontSize: 18,  // Increase this value to make the font bigger
+    padding: 5
+  },
+  textinput: {
+    fontSize: 16,
+    padding: 5,
   },
 });

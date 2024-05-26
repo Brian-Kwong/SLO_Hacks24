@@ -31,28 +31,49 @@ export default function Login() {
   }
 
   return (
-    <View>
-      <Text>Sign Up</Text>
+    <View style={styles.container}>
       <View>
-        <TextInput
-          placeholder="USERNAME"
-          value={username}
-          onChangeText={(text) => setUsername(text)}
-          autoCorrect={false}
-          autoCapitalize="none"
-        />
-        <TextInput
-          placeholder="PASSWORD"
+      <Text style={styles.text}>SIGN UP</Text>
+        <View>
+          <TextInput style={styles.textinput}
+            placeholder="Username"
+            value={username}
+            onChangeText={(text) => setUsername(text)}
+            autoCorrect={false}
+            autoCapitalize="none"
+          ></TextInput>
+        </View>
+        <View>
+        <TextInput style={styles.textinput}
+          placeholder="Password"
           secureTextEntry
           value={password}
           onChangeText={(text) => setPassword(text)}
           autoCorrect={false}
           autoCapitalize="none"
-        />
+        ></TextInput>
+        </View>
       </View>
-      <Pressable onPress={handleLogin}>
-        <Text>Sign In</Text>
-      </Pressable>
+      <View>
+        <Pressable onPress={handleLogin}>
+          <Text>Sign In</Text>
+        </Pressable>
+      </View>
     </View>
   );
 }
+const styles = StyleSheet.create({
+  container: {
+    height: "100%",
+    justifyContent: "space-around",
+    alignItems: "center",
+  },
+  text: {
+    fontSize: 24,  // Increase this value to make the font bigger
+    padding: 5
+  },
+  textinput: {
+    fontSize: 16,
+    padding: 5,
+  },
+});

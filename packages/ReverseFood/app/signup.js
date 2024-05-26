@@ -13,22 +13,31 @@ export default function Login() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
 
+  const url="http://10.151.71.149:18000";
+
   async function handleLogin() {
-    const response = await fetch("10.144.42.152/auth/register", {
+    console.log(username)
+    console.log(password)
+    const response = await fetch(`${url}/auth/register`, {
       method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
       body: JSON.stringify({
         username: username,
         password: password,
       }),
-    });
-
-    const result = await response.json();
-    if (result) {
-      console.log("Account created");
-    } else {
-      throw Error("Error creating account");
+    }).then((response)=>{
+      if(response === 200){
+        console.log("Logged In")
+      }
+      else{
+        console.log("Error logging in", response.status)
+      }
     }
+    ).catch((error) => {console.log(error)});
   }
+
 
   return (
     <View style={styles.container}>

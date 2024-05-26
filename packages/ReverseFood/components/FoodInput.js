@@ -10,6 +10,8 @@ import {
 } from "react-native";
 import { useState } from "react";
 import * as ImagePicker from "expo-image-picker";
+import ImgToBase64 from "react-native-image-base64";
+import { submitData } from "../components/submitData";
 
 export default function FoodInput() {
   const [image, setImage] = useState(null);
@@ -24,19 +26,20 @@ export default function FoodInput() {
       allowsEditing: true,
       aspect: [4, 3],
       quality: 1,
+      base64: true,
     });
-
     if (!result.canceled) {
-      setImage(result.assets[0].uri);
+      setImage(result.assets[0].base64);
     }
   };
 
   // To handle submission of form. probably fetch here
   const handleSubmit = () => {
-    console.log(image);
-    console.log(foodName);
-    console.log(ingredients);
-    console.log(desc);
+    // console.log(image);
+    // console.log(foodName);
+    // console.log(ingredients);
+    // console.log(desc);
+    submitData(image, foodName, ingredients, desc)
   };
 
   return (
@@ -53,7 +56,7 @@ export default function FoodInput() {
         <Text>Picture of food:</Text>
         <Button title="Pick an image from camera roll" onPress={pickImage} />
         {image && (
-          <Image source={{ uri: image }} style={{ height: 300, width: 300 }} />
+          <Image source={{ uri: 'data:image/jpeg;base64,' + image }} style={{ height: 300, width: 300 }} />
         )}
       </View>
       <View>

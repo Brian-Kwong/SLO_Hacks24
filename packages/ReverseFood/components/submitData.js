@@ -1,4 +1,4 @@
-const URL = "http:/10.151.71.149:3000/image";
+const URL = "https://mealathon.azurewebsites.net/image";
 export function submitData(image, foodName, ingredients, desc){
     const food = {
         image: image,

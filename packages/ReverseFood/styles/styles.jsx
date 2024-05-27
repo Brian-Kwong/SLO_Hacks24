@@ -71,7 +71,7 @@ export const table_styles = StyleSheet.create({
         width: "25%"
     },
     tableCell:{
-        fontSize: 10,
+        fontSize: 16,
         fontFamily: 'Noto Sans',
         color: 'black',
         textAlign: 'center',

@@ -9,7 +9,7 @@ function fetchData (params) {
     return new Promise((resolve, reject) => {
     console.log("Getting tokem"); SecureStore.getItemAsync("token").then(async (token) => {
     
-    const URL = "http://10.151.71.149:3000/image";
+    const URL = "http://mealathon.azurewebsites.net/image";
     console.log("Token: " + token);
     if (token === undefined) {
         console("Error: Token is undefined");
@@ -67,6 +67,7 @@ export default function Page() {
         router.replace("info")}).catch((error) => {alert("Error: " + error); router.replace("input")});
 
     return <View style={our_styles.center_container}>
-            <Text style={our_styles.subheading}>🍜 Please Wait Our AI is coooking 🍜</Text>
+            <Text style={our_styles.subheading}>🍜 Please Wait 🍜</Text>
+            <Text style={our_styles.subheading}>The AI is coooking</Text>
         </View>
 }

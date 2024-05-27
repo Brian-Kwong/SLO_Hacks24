@@ -72,7 +72,7 @@ export default function Login() {
         </View>
       </View>
       <View>
-        <Pressable onPress={handleLogin}>
+        <Pressable onPress={()=>{handleLogin}}>
           <Text style={styles.text}>Sign Up</Text>
         </Pressable>
       </View>

@@ -14,7 +14,7 @@ export default function Login() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
 
-const url="http://10.151.71.149:18000";
+const url="https://mealathon.azurewebsites.net";
 
   async function handleLogin() {
     const response = await fetch(`${url}/auth/login`, {
@@ -66,7 +66,7 @@ const url="http://10.151.71.149:18000";
         ></TextInput>
       </View>
       </View>
-      <Pressable onPress={handleLogin}>
+      <Pressable onPress={() => {handleLogin}>
         <Text style={styles.text}>Login</Text>
       </Pressable>
     </View>

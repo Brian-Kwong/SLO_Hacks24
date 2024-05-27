@@ -14,6 +14,7 @@ genaiClient = genaiClient.getGenerativeModel({
 });
 
 export async function postImage(req, res, next) {
+    console.log("POST /image", req.body);
     const image = req.body.image;
     const foodName = req.body.foodName;
     const ingredients = req.body.ingredients;
@@ -82,18 +83,19 @@ export async function getFoodFacts(req, res) {
         await request.then((response) => {
             if (response.status === 200) {
                 response.json().then((data) => {
+                    console.log(data);
                     let foodData = data.foods[0];
                     foodData = {
                         name: food,
-                        description: changeCase.capitalCase(foodData.description),
-                        foodCategory: changeCase.capitalCase(foodData.foodCategory),
-                        ingredients: changeCase.capitalCase(foodData.ingredients),
+                        description: (foodData.description === undefined) ? "Unknown": changeCase.capitalCase(foodData.description),
+                        foodCategory: (foodData.foodCategory === undefined) ? "Unknown": changeCase.capitalCase(foodData.foodCategory),
+                        ingredients: (foodData.ingredients === undefined) ? "Unknown" : changeCase.capitalCase(foodData.ingredients),
                         nutrients: foodData.foodNutrients.map((nutrient) => {
                             return {
                                 name: nutrient.nutrientName,
                                 unit: nutrient.unitName,
                                 value: nutrient.value,
-                                dailyValue: nutrient.dailyValue,
+                                dailyValue: nutrient.percentDailyValue,
                             };
                         }),
                         image: null,

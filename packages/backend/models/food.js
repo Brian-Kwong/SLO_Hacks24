@@ -3,7 +3,7 @@ import mongoose, { model, Schema } from "mongoose"
 
 const foodSchema = new Schema({
     name: {type: String, required: true},
-    image: {type: Buffer},
+    image: {type: Buffer,  contentType: String},
     description: {type: String},
     foodCategory: {type: String},
     ingredients: [{type: String}],

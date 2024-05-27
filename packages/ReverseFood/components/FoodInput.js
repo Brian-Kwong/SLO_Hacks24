@@ -14,10 +14,11 @@ import ImgToBase64 from "react-native-image-base64";
 import { submitData } from "../components/submitData";
 import { colors, ourStyles } from "../styles/styles.jsx";
 import { router } from "expo-router";
-import SecureStore from "expo-secure-store";
+
 
 function swutchPages(image, foodName, ingredients, desc){
-  router.push({pathname: "info", params: {image: image, foodName: foodName, ingredients: ingredients, description: desc}})
+  console.log("switching pages")
+  router.push({pathname: "/load", params: {image: image, foodName: foodName, ingredients: ingredients, description: desc}})
 }
 
 export var params = {
@@ -80,7 +81,7 @@ export default function FoodInput() {
           value={desc}
         ></TextInput>
       </View>
-      <Button title="Submit" onPress={()=> { params = {image,foodName,ingredients,desc} ; swutchPages(image,foodName,ingredients,desc)}}/>
+      <Button title="Submit" onPress={()=> swutchPages(image,foodName,ingredients,desc)}/>
     </View>
   );
 }

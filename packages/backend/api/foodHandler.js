@@ -19,6 +19,7 @@ export async function submitFood(req, res){
 
     const foodFacts = await fetch(`http://localhost:3000/foodFacts?foodName=${imgData ? imgData.dish : foodName}`, {method: "GET"}).then((response) => {return response.json()});
 
+
     try {
         const newFoodItem = await new foodModel({
             name: imgData ? imgData.dish : foodName,
@@ -30,15 +31,17 @@ export async function submitFood(req, res){
         
         // add to nutrient array
         foodFacts.nutrients.map(async (nutrient) => {
-            await foodModel.findOneAndUpdate({_id: newFoodItem._id}, {$push: {"nutrients": {name: nutrient.name, unit: nutrient.unit, value: Number(nutrient.value)}}})
+            await foodModel.findOneAndUpdate({_id: newFoodItem._id}, {$push: {"nutrients": {name: nutrient.name, unit: nutrient.unit, value: Number(nutrient.value), daiilyValue: Number(nutrient.dailyValue)  }}})
         })
+
+        newFoodItem.nutrients = foodFacts.nutrients;
 
         const updatedUser = await userModel.findOneAndUpdate({username: username}, {$push: {"images": newFoodItem._id }}).exec();
 
         if (!updatedUser){
             res.sendStatus(404).end();
         }
-
+        newFoodItem.image = encodedImage;
         res.status(201).send(newFoodItem);
     }
     catch(error){

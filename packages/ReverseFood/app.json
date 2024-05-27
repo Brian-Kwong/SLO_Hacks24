@@ -16,7 +16,8 @@
       "supportsTablet": true,
       "config": {
         "usesNonExemptEncryption": false
-      }
+      },
+      "bundleIdentifier": "y"
     },
     "android": {
       "adaptiveIcon": {
@@ -30,10 +31,12 @@
     },
     "plugins": [
       "expo-router",
-      ["expo-secure-store",
-      {
-        "faceIDPermission": "Allow $(PRODUCT_NAME) to access your Face ID biometric data."
-      }]
+      [
+        "expo-secure-store",
+        {
+          "faceIDPermission": "Allow $(PRODUCT_NAME) to access your Face ID biometric data."
+        }
+      ]
     ]
   }
 }

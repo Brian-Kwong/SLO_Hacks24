@@ -8,7 +8,7 @@ import {
   Pressable,
 } from "react-native";
 import { useState } from "react";
-import SecureStore from "expo-secure-store";
+import * as SecureStore from "expo-secure-store";
 
 export default function Login() {
   const [username, setUsername] = useState("");
@@ -17,7 +17,7 @@ export default function Login() {
 const url="https://mealathon.azurewebsites.net";
 
   async function handleLogin() {
-    const response = await fetch(`${url}/auth/login`, {
+    await fetch(`${url}/auth/login`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -66,7 +66,7 @@ const url="https://mealathon.azurewebsites.net";
         ></TextInput>
       </View>
       </View>
-      <Pressable onPress={() => {handleLogin}}>
+      <Pressable onPress={() => {handleLogin()}}>
         <Text style={styles.text}>Login</Text>
       </Pressable>
     </View>

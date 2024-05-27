@@ -8,18 +8,18 @@ import {
   Pressable,
 } from "react-native";
 import { useState } from "react";
-import SecureStore from "expo-secure-store";
+import * as SecureStore from "expo-secure-store";
 
 export default function Login() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
 
-  const url="http://10.151.71.149:18000";
+  const url="https://mealathon.azurewebsites.net";
 
   async function handleLogin() {
     console.log(username)
     console.log(password)
-    const response = await fetch(`${url}/auth/register`, {
+    await fetch(`${url}/auth/register`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -72,7 +72,7 @@ export default function Login() {
         </View>
       </View>
       <View>
-        <Pressable onPress={()=>{handleLogin}}>
+        <Pressable onPress={()=>{handleLogin()}}>
           <Text style={styles.text}>Sign Up</Text>
         </Pressable>
       </View>

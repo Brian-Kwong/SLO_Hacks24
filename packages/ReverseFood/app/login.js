@@ -66,7 +66,7 @@ const url="https://mealathon.azurewebsites.net";
         ></TextInput>
       </View>
       </View>
-      <Pressable onPress={() => {handleLogin}>
+      <Pressable onPress={() => {handleLogin}}>
         <Text style={styles.text}>Login</Text>
       </Pressable>
     </View>

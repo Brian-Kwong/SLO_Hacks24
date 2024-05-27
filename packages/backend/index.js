@@ -9,6 +9,7 @@ const app = express();
 const router = express.Router();
 // Add json middleware
 app.use(express.json({limit: "50mb"}));
+const PORT=document.env.PORT;
 
 addRoutes(app);
 addAuthRoutes(router);
@@ -20,6 +21,6 @@ app.use("/auth", router);
 // Connect to mongo DB
 connect("test");
 
-app.listen(3000, () => {
-    console.log('Server is running on port 3000');
+app.listen(PORT, () => {
+    console.log('Server is running on port ', PORT);
 });

@@ -9,7 +9,7 @@ const app = express();
 const router = express.Router();
 // Add json middleware
 app.use(express.json({limit: "50mb"}));
-const PORT=document.env.PORT;
+const PORT=process.env.PORT;
 
 addRoutes(app);
 addAuthRoutes(router);

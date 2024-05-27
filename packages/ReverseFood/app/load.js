@@ -9,7 +9,7 @@ function fetchData (params) {
     return new Promise((resolve, reject) => {
     console.log("Getting tokem"); SecureStore.getItemAsync("token").then(async (token) => {
     
-    const URL = "http://mealathon.azurewebsites.net/image";
+    const URL = "https://mealathon.azurewebsites.net/image";
     console.log("Token: " + token);
     if (token === undefined) {
         console("Error: Token is undefined");

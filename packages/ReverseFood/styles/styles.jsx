@@ -18,10 +18,15 @@ export const our_styles = StyleSheet.create({
     },
     textInput:{
         height: 40,
-        width: 200,
+        width: 225,
         fontSize: 20,
         FontFace: 'Noto Sans',
-        borderColor: 'gray',
+        borderColor: 'orange',
+        borderWidth: 2,
+        borderRadius: 6,
+        margin: 12,
+        paddingHorizontal: 10,
+        paddingVertical: 8 
     },
     buttoon: {
         color: colors[0]
@@ -44,6 +49,9 @@ export const our_styles = StyleSheet.create({
         fontFamily: 'Noto Sans',
         color: 'black',
         textAlign: 'center',
+    },
+    textArea: {
+        height: 100
     }
 });
 
@@ -78,4 +86,3 @@ export const table_styles = StyleSheet.create({
         width: "25%"
     }
 })
-

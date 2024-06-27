@@ -9,6 +9,7 @@ import {
 } from "react-native";
 import { useState } from "react";
 import * as SecureStore from "expo-secure-store";
+import { our_styles } from "../styles/styles";
 
 export default function Login() {
   const [username, setUsername] = useState("");
@@ -47,7 +48,7 @@ const url="https://mealathon.azurewebsites.net";
       <View>
       <Text style={styles.text}>Login</Text>
       <View>
-        <TextInput style={styles.textinput}
+        <TextInput style={our_styles.textInput}
           placeholder="Username"
           value={username}
           onChangeText={(text) => setUsername(text)}
@@ -56,7 +57,7 @@ const url="https://mealathon.azurewebsites.net";
         ></TextInput>
       </View>
       <View>
-        <TextInput style={styles.textinput}
+        <TextInput style={our_styles.textInput}
           placeholder="Password"
           secureTextEntry
           value={password}

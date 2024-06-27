@@ -12,7 +12,7 @@ import { useState } from "react";
 import * as ImagePicker from "expo-image-picker";
 import ImgToBase64 from "react-native-image-base64";
 import { submitData } from "../components/submitData";
-import { colors, ourStyles } from "../styles/styles.jsx";
+import { colors, our_styles } from "../styles/styles.jsx";
 import { router } from "expo-router";
 
 
@@ -56,6 +56,7 @@ export default function FoodInput() {
           placeholder="Name"
           onChangeText={(text) => setFoodName(text)}
           value={foodName}
+          style={our_styles.textInput}
         ></TextInput>
       </View>
       <View>
@@ -71,6 +72,9 @@ export default function FoodInput() {
           placeholder="Ingredients"
           onChangeText={(text) => setIngredients(text)}
           value={ingredients}
+          style={[our_styles.textInput, our_styles.textArea]}
+          multiline={true}
+          numberOfLines={4}      
         ></TextInput>
       </View>
       <View>
@@ -79,6 +83,10 @@ export default function FoodInput() {
           placeholder="Description"
           onChangeText={(text) => setDescription(text)}
           value={desc}
+          style={[our_styles.textInput, our_styles.textArea]}
+          multiline={true}
+          numberOfLines={4}
+      
         ></TextInput>
       </View>
       <Button title="Submit" onPress={()=> swutchPages(image,foodName,ingredients,desc)}/>
